@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            
+                <h3>Upload Files</h3>
+                <div class="drop_box">
+                    <header>
+                        <h4>Select File Here</h4>
+                    </header>
+                    <form method="post" action="{{ url_for('upload_file') }}" enctype="multipart/form-data">        
+                        <input type="file" name="file" accept=".csv" id="fileID"><br>
+                        <button type="submit" class="btn">Upload</button>
+                    </form><br>
+                    <h5>or</h5> <br>           
+                    <h2>Google Sheets Data Fetching</h2>
+                    <form method="post" action="{{ url_for('fetch_google_sheet') }}">
+                        <label for="sheet_url">Enter Google Sheet URL:</label><br>
+                        <input type="text" id="sheet_url" name="sheet_url" placeholder="https://docs.google.com/spreadsheets/d/..." required>
+                        <br><br>
+                        <input type="submit" class="btn" value="Fetch Data">
+                    </form>                    
+                </div>    
+            
+          </div>
+        </div>    
+      </div>
+      
+      <script src="static/js/Script.js"></script> 
+</body>
+</html> 

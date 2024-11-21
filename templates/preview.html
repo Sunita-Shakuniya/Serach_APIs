@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSV Data Preview</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/preview.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script>
+        // Function to handle column selection
+        function selectColumn(event, colName) {
+            // Store selected column in a hidden field
+            document.getElementById('selectedColumn').value = colName;
+
+            // Highlight the selected column header
+            const headers = document.querySelectorAll('th');
+            headers.forEach(header => header.classList.remove('selected'));
+            event.target.classList.add('selected');
+
+            // Show the search section after selecting a column
+            const searchSection = document.getElementById('searchSection');
+            searchSection.style.display = 'block'; 
+        }
+    </script> 
+</head>
+<body>
+    <h2>CSV File Data</h2>
+    
+        {% if csv_data %}
+            <form method="POST" action="/perform-search">
+                <div class="table-container">
+                    <table border="1">
+                        <thead>
+                            <tr>
+                                {% for col in csv_data[0].keys() %}
+                                    <!-- Pass the 'event' object to the JavaScript function -->
+                                    <th onclick="selectColumn(event, '{{ col }}')">{{ col }}</th>
+                                {% endfor %}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in csv_data %}
+                                <tr>
+                                    {% for value in row.values() %}
+                                        <td>{{ value }}</td>
+                                    {% endfor %}
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>    
+                <br>
+                <!-- Hidden input to store the selected column -->
+                <input type="hidden" id="selectedColumn" name="selectedColumn">
+
+                <!-- Search prompt section (initially hidden) -->
+                <div id="searchSection" style="display: none;" >
+                    <label for="query">Enter Search Query:</label>
+                    <!-- Added 'name' attribute to the textarea so that it gets submitted with the form -->
+                    <textarea id="query" name="query" class="prompt-form" rows="3" placeholder="Search" required></textarea>
+                    <br>
+                    <button type="submit" class="btn">Search</button>
+                </div>
+            </form>
+        {% else %}
+            <p>No data to display</p>
+        {% endif %}
+   
+    <a href="{{ url_for('home') }}">Upload another file</a>
+    
+        
+
+    
+</body>
+</html>

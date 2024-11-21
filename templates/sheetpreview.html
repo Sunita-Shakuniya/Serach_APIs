@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Preview Data</title>
+    <link rel="stylesheet" href="static/css/preview.css">
+</head>
+<body>
+    <h2>Google Sheets Data</h2>
+    <div>{{ data|safe }}</div>
+    <a href="{{ url_for('logout') }}">Logout</a>
+    <form action="">
+        <div class="prompt-continer">
+            <label for="exampleFormControlTextarea1">Enter your prompt:</label>
+            <textarea class="prompt-form" id="exampleFormControlTextarea1" rows="3" placeholder="Search"></textarea>
+          </div>
+    </form>
+</body>
+</html>
+

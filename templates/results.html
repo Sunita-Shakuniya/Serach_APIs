@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Results</title>
+</head>
+<body>
+    <h2>Search Results</h2>
+    <table border="1">
+        <tr>
+            <th>Original Value</th>
+            <th>Search Result</th>
+        </tr>
+        {% for item in results %}
+        <tr>
+            <td>{{ item.original }}</td>
+            <td>{{ item.result }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="/preview">Go Back</a>
+</body>
+</html>

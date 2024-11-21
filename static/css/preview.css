@@ -1,0 +1,46 @@
+/* Container for the table with scrollbars */
+.table-container {
+    max-height: 400px; /* Set a max height to enable vertical scrolling */
+    max-width: 100%;   /* Set a max width to enable horizontal scrolling */
+    overflow-x: auto;  /* Horizontal scrollbar */
+    overflow-y: auto;  /* Vertical scrollbar */
+    border: 1px solid #ccc; /* Optional border for the container */
+    padding: 10px;
+}
+
+/* Styling for the table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+.prompt-continer{
+        display: none;
+        display: flex;
+        flex-direction: column;
+        margin: 2%;
+}
+.prompt-container.active {
+    display: block; /* Set to block when active */
+}
+.prompt-form{
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
